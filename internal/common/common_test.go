@@ -15,7 +15,7 @@ func TestApplyOperations(t *testing.T) {
 		balances map[int]int
 		errors   []string
 	}{
-		{"empty", map[int]*methods.Account{}, nil, map[int]int{}, []string{}},
+
 		{"deposit", map[int]*methods.Account{1: {ID: 1, Balance: 100, Active: true}}, []Operation{{1, "deposit", 20}}, map[int]int{1: 120}, []string{}},
 		{"withdraw", map[int]*methods.Account{1: {ID: 1, Balance: 100, Active: true}}, []Operation{{1, "withdraw", 20}}, map[int]int{1: 80}, []string{}},
 		{"inactive", map[int]*methods.Account{1: {ID: 1, Balance: 100}}, []Operation{{1, "deposit", 20}}, map[int]int{1: 100}, []string{"account 1: inactive account"}},

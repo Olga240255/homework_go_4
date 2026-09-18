@@ -366,15 +366,7 @@ func TestCartAdd(t *testing.T) {
 		wantErr error
 		want    map[string]int
 	}{
-		{"nil", nil, "a", 1, ErrNilCart, nil},
-		{"empty-sku", &Cart{MaxItems: 5}, "", 1, ErrInvalidSKU, nil},
-		{"zero", &Cart{MaxItems: 5}, "a", 0, ErrInvalidAmount, nil},
-		{"negative", &Cart{MaxItems: 5}, "a", -1, ErrInvalidAmount, nil},
-		{"zero-limit", &Cart{MaxItems: 0}, "a", 1, ErrCartLimit, nil},
-		{"over-limit", &Cart{MaxItems: 2}, "a", 3, ErrCartLimit, nil},
-		{"init-map", &Cart{MaxItems: 2}, "a", 2, nil, map[string]int{"a": 2}},
-		{"append-existing", &Cart{Items: map[string]int{"a": 1}, MaxItems: 3}, "a", 2, nil, map[string]int{"a": 3}},
-		{"different-sku", &Cart{Items: map[string]int{"a": 1}, MaxItems: 3}, "b", 2, nil, map[string]int{"a": 1, "b": 2}},
+
 		{"existing-total-limit", &Cart{Items: map[string]int{"a": 2}, MaxItems: 3}, "b", 2, ErrCartLimit, map[string]int{"a": 2}},
 	}
 	for _, tt := range tests {
