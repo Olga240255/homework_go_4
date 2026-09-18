@@ -86,6 +86,7 @@ func BuildAccountIndex(accounts []methods.Account) map[int]*methods.Account {
 // События применяются по порядку, новые ID разрешены.
 // Если входная map не `nil`, изменить и вернуть тот же объект;
 // если `nil` — создать новую map. |
+//
 
 type Event struct {
 	UserID int
